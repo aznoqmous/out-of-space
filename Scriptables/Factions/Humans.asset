@@ -13,7 +13,30 @@ MonoBehaviour:
   m_Name: Humans
   m_EditorClassIdentifier: 
   Name: Humans
-  Color: {r: 1, g: 0.8632076, b: 0.8875679, a: 1}
+  Color: {r: 0.9921569, g: 0.7490196, b: 0.50980395, a: 1}
   BeingSprite: {fileID: 21300000, guid: 61d5bc3799e6b0548890cd078c9e8088, type: 3}
   ShipSprite: {fileID: 21300000, guid: 80b4a9538c50b524a841d3b5cf7e8447, type: 3}
   HouseSprite: {fileID: 21300000, guid: 324847eddaf439746bfe845745169a65, type: 3}
+  LordSprite: {fileID: 21300000, guid: e0a63d1834f3a9e43909bb3c30d315b6, type: 3}
+  LordDeadSprite: {fileID: 21300000, guid: 3d0c2aae230650449973677830845413, type: 3}
+  Font: {fileID: 11400000, guid: 2d44285200593f142bc2965933b4323e, type: 2}
+  PlanetConqueredDialog:
+  - One more!
+  - Planet conquered, mission complete!
+  - Another world added to our galactic empire.
+  - The stars bow before our might.
+  - Victory in the cosmos, one planet at a time.
+  - Another day, another planet.
+  PlanetLoosedDialog:
+  - One less!
+  - Huuurted!
+  - The cosmic battle is far from over!
+  - Enjoy it while you can!
+  - We'll take back what's rightfully ours!
+  DeadDialog:
+  - This time, we lose...
+  - NOOOOOO!!!!!
+  - Arggrgrl.....
+  TauntDialog:
+  - Aha !
+  DialogPitch: 1

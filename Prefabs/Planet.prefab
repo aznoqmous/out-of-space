@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3058685135902372921}
   - component: {fileID: 8599522429854520633}
   - component: {fileID: 706890274882747286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Planet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,10 +58,12 @@ MonoBehaviour:
   _selection: {fileID: 6808048035263442047}
   _innerSelection: {fileID: 5519561386241153389}
   _planetSprites:
+  - {fileID: 21300000, guid: e034265e783c0c443a1d7a528cf2584f, type: 3}
   - {fileID: 21300000, guid: 5567f08d40e4ccc44927091842d15b9b, type: 3}
   - {fileID: 21300000, guid: b7f4f1ffac7d2934584af8825873fd37, type: 3}
   - {fileID: 21300000, guid: d25b2750d9c847147b2c03a42be85acf, type: 3}
-  - {fileID: 21300000, guid: e034265e783c0c443a1d7a528cf2584f, type: 3}
+  - {fileID: 21300000, guid: 04b797e408e2062479c7c71ec130dcc9, type: 3}
+  - {fileID: 21300000, guid: f24013b7c15d28f4ab14eba5f63c787c, type: 3}
   _shipPrefab: {fileID: 8172980740312353587, guid: 61d79e2ad3ada2b488f29749bf871cde, type: 3}
 --- !u!50 &3058685135902372921
 Rigidbody2D:
@@ -130,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3105373665956137265}
   - component: {fileID: 3105373665956137264}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1195479702234152479}
   - component: {fileID: 5519561386241153389}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: InnerSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5880258283425651739}
   - component: {fileID: 6808048035263442047}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Selection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +329,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6133370894664087256}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -382,7 +384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7542340270346952330}
   - component: {fileID: 2190953829611463326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

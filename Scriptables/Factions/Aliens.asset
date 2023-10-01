@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d671d67bf2b758d4b83dfcc698dc0b3b, type: 3}
+  m_Name: Aliens
+  m_EditorClassIdentifier: 
+  Name: Aliens
+  Color: {r: 0.6313726, g: 0.9176471, b: 0.89019614, a: 1}
+  BeingSprite: {fileID: 21300000, guid: d2bceeb875789224da1825ed3d4c899a, type: 3}
+  ShipSprite: {fileID: 21300000, guid: 9bb7d4c20ccf40b4a993d2a17c752a82, type: 3}
+  HouseSprite: {fileID: 21300000, guid: 324847eddaf439746bfe845745169a65, type: 3}
+  LordSprite: {fileID: 21300000, guid: 885615da1e31f4d4d8f9128bb3ffeaa6, type: 3}
+  LordDeadSprite: {fileID: 21300000, guid: 4efd570b87ec7014ea0e045e66ce68bc, type: 3}
+  Font: {fileID: 11400000, guid: 153b29127ea983244b71f7264304e418, type: 2}
+  PlanetConqueredDialog:
+  - One more!
+  - Planet conquered, mission complete!
+  - Another world added to our galactic empire.
+  - The stars bow before our might.
+  - Victory in the cosmos, one planet at a time.
+  - Another day, another planet.
+  PlanetLoosedDialog:
+  - One less!
+  - Huuurted!
+  - The cosmic battle is far from over!
+  - Enjoy it while you can!
+  - We'll take back what's rightfully ours!
+  DeadDialog:
+  - This time, we lose...
+  - NOOOOOO!!!!!
+  - Arggrgrl.....
+  TauntDialog:
+  - Aha !
+  DialogPitch: 0.75

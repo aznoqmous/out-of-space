@@ -12,8 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d671d67bf2b758d4b83dfcc698dc0b3b, type: 3}
   m_Name: Neptunians
   m_EditorClassIdentifier: 
-  Name: Aliens
-  Color: {r: 0.62862843, g: 0.5801887, b: 1, a: 1}
-  BeingSprite: {fileID: 21300000, guid: d2bceeb875789224da1825ed3d4c899a, type: 3}
-  ShipSprite: {fileID: 21300000, guid: 9bb7d4c20ccf40b4a993d2a17c752a82, type: 3}
+  Name: Neptunians
+  Color: {r: 0.7490196, g: 0.5411765, b: 0.9176471, a: 1}
+  BeingSprite: {fileID: 21300000, guid: 2d05b3c9a927c454baf23ee5ce40d533, type: 3}
+  ShipSprite: {fileID: 21300000, guid: d137bf9d42607064681a97f9db6bcf9f, type: 3}
   HouseSprite: {fileID: 21300000, guid: 324847eddaf439746bfe845745169a65, type: 3}
+  LordSprite: {fileID: 21300000, guid: 77dde73799e61434da71d47c0a9e2ccf, type: 3}
+  LordDeadSprite: {fileID: 21300000, guid: e8cb6f855afd20c4cbb8cc3e3b1b23df, type: 3}
+  Font: {fileID: 11400000, guid: af93341c7cf66b34db828440ff40b0a0, type: 2}
+  PlanetConqueredDialog:
+  - One more!
+  - Planet conquered, mission complete!
+  - Another world added to our galactic empire.
+  - The stars bow before our might.
+  - Victory in the cosmos, one planet at a time.
+  - Another day, another planet.
+  PlanetLoosedDialog:
+  - One less!
+  - Huuurted!
+  - The cosmic battle is far from over!
+  - Enjoy it while you can!
+  - We'll take back what's rightfully ours!
+  DeadDialog:
+  - This time, we lose...
+  - NOOOOOO!!!!!
+  - Arggrgrl.....
+  TauntDialog:
+  - Aha !
+  DialogPitch: 1.8

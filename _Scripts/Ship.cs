@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Ship : MonoBehaviour
 {
@@ -11,11 +12,18 @@ public class Ship : MonoBehaviour
     [SerializeField] ParticleSystem _particleSystem;
     Faction _faction;
     float _crewCount = 1;
-
-    private void Start()
+    float _speed = 6f;
+    private void Awake()
     {
-        _particleSystem.Pause();
+        ShowParticles(false);
     }
+
+    public void ShowParticles(bool state=true)
+    {
+        _particleSystem.gameObject.SetActive(state);
+    }
+
+    bool _landed = false;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -25,13 +33,15 @@ public class Ship : MonoBehaviour
         Planet planet = collision.collider.GetComponent<Planet>();
         if (planet)
         {
-            _particleSystem.Stop();
-            Vector3 distance = planet.transform.position - transform.position;
+            ShowParticles(false);
+            //Vector3 distance = planet.transform.position - transform.position;
             //float angle = Mathf.Atan2(distance.y, distance.x);
             for (int i = 0; i < _crewCount; i++)
             {
                 planet.AddBeing(_faction);
             }
+            _faction.RemoveShip(this);
+            _landed = true;
         }
     }
 
@@ -55,9 +65,9 @@ public class Ship : MonoBehaviour
 
     public void Launch()
     {
-        ActivateThruster(100f);
+        ActivateThruster(_speed*30f);
         _collider.enabled = true;
-        _particleSystem.Play();
+        ShowParticles();
     }
 
     void ActivateThruster(float force=1f, float angle=-999f)
@@ -75,12 +85,23 @@ public class Ship : MonoBehaviour
 
     private void Update()
     {
-        Vector2 bounds = GameManager.Instance.Bounds;
+        if(_landed)
+        {
+            Color color = _spriteRenderer.color;
+            color.a = Mathf.Lerp(color.a, 0, Time.deltaTime);
+            _spriteRenderer.color = color;
+            _spriteRenderer.transform.localScale = Vector3.Lerp(_spriteRenderer.transform.localScale, Vector3.zero, Time.deltaTime);
+            if (color.a <= 0.01f) Destroy(gameObject);
+            return;
+        }
+
         Vector3 position = transform.position;
-        if (position.x > bounds.x / 2f) position.x = -bounds.x/2f;
-        if (position.x < -bounds.x / 2f) position.x = bounds.x/2f;
-        if (position.y > bounds.y / 2f) position.y = -bounds.y/2f;
-        if (position.y < -bounds.y / 2f) position.y = bounds.y/2f;
+        if (position.magnitude > GameManager.Instance.GameSize)
+        {
+            RotateTowardNearestPlanet(Time.deltaTime);
+            return;
+        }
+       
         transform.position = position;
 
         if(_rigidBody.velocity != Vector2.zero)
@@ -92,11 +113,35 @@ public class Ship : MonoBehaviour
             float delta = Mathf.DeltaAngle(transform.localEulerAngles.z, angle) - 90;
             if (Mathf.Abs(delta) > 30f) return;
 
-            Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            RotateTowardNearestPlanet(Time.deltaTime * 10f);
+            /*Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * 10f);
 
-            _rigidBody.velocity = Vector2.Lerp(_rigidBody.velocity, distance.normalized, Time.deltaTime * 10f);
+            _rigidBody.velocity = Vector2.Lerp(_rigidBody.velocity, distance.normalized*_speed, Time.deltaTime * 10f);*/
         }
         
+    }
+
+    public void RotateTowardNearestPlanet(float force)
+    {
+        Planet planet = GameManager.Instance.GetNearestPlanet(transform.position);
+        RotateToward(planet.transform.position, force);
+    }
+    public void RotateToward(Vector3 position, float force)
+    {
+        Vector3 dir = position - transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        //Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, force);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(angle-90f, Vector3.forward), Time.deltaTime);
+
+        float delta = Mathf.DeltaAngle(transform.localEulerAngles.z, angle) - 90;
+        transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, new Vector3(0, 0, transform.localEulerAngles.z + delta), force);
+        _rigidBody.velocity = Vector2.Lerp(_rigidBody.velocity, dir.normalized*_speed, force / 4f);
+            
+        //_rigidBody.velocity = Vector2.zero;
+
+
     }
 }

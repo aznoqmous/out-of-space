@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Planet : MonoBehaviour
@@ -30,6 +29,7 @@ public class Planet : MonoBehaviour
         ShowSelection(false);
         _spriteRenderer.transform.localEulerAngles = new Vector3(0, 0, Random.value * 360f);
         _spriteRenderer.sprite = _planetSprites.PickRandom();
+
     }
 
     public Dictionary<Faction, List<Being>> _beings = new Dictionary<Faction, List<Being>>();
@@ -173,7 +173,7 @@ public class Planet : MonoBehaviour
     Ship _currentShip;
     public Ship SpawnShip()
     {
-        Ship newShip = Instantiate(_shipPrefab, GameManager.Instance.transform);
+        Ship newShip = Instantiate(_shipPrefab);
         _currentShip = newShip;
         newShip.SetFaction(Faction);
         RotateShip(Mathf.PI/2);
@@ -195,11 +195,14 @@ public class Planet : MonoBehaviour
     }
     public void LaunchShip()
     {
+        _amountSelected = Mathf.Min(_amountSelected, Population);
         _isSelected = false;
         GameManager.Instance.UnselectPlanet(this);
         _currentShip.Launch();
         _currentShip.SetCrewCount(_amountSelected);
-        for (int i = 0; i < _amountSelected; i++) RemoveBeing(_beings[_faction][0]);
+        Faction faction = _faction;
+        for (int i = 0; i < _amountSelected; i++) RemoveBeing(_beings[faction][0]);
+        faction.AddShip(_currentShip);
     }
 
     public void ShowSelection(bool state=true)

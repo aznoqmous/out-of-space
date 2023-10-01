@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 594031557884366443}
   - component: {fileID: 1988519328095060758}
   - component: {fileID: 3766483437935714461}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: d2bceeb875789224da1825ed3d4c899a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -147,7 +147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9209418983229049569}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 3267239017427032739}
   - component: {fileID: 4198543828380859526}
   - component: {fileID: 95176273210083365}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Being
   m_TagString: Untagged
   m_Icon: {fileID: 0}
